@@ -1,0 +1,23 @@
+{
+  "name": "quiz-app-backend",
+  "version": "1.0.0",
+  "description": "Backend API for quiz application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tejpatelme/quiz-app-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tejpatelme/quiz-app-backend/issues"
+  },
+  "homepage": "https://github.com/tejpatelme/quiz-app-backend#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
