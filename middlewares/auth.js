@@ -18,7 +18,7 @@ const validateEmail = (req, res, next) => {
 const validatePassword = (req, res, next) => {
   const { password } = req.body;
 
-  const isStrongPassword = validator.isStrongPassword(password,{minSymbols: 0});
+  const isStrongPassword = validator.isStrongPassword(password, { minSymbols: 0 });
 
   if (!isStrongPassword) {
     return res
