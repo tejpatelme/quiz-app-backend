@@ -1,5 +1,22 @@
 const jwt = require("jsonwebtoken");
 const validator = require("validator");
+const { User } = require("../models/user.model");
+
+const checkIfUserExists = async (req, res, next) => {
+  const { email } = req.body;
+
+  const user = await User.findOne({ email: email.toLowerCase() });
+
+  if (user) {
+    return res.status(200).json({
+      success: false,
+      errorMessage:
+        "A user with the specified email already exists. Please login instead",
+    });
+  }
+
+  next();
+};
 
 const validateEmail = (req, res, next) => {
   const { email } = req.body;
@@ -38,4 +55,4 @@ const verifyToken = (req, res, next) => {
   next();
 };
 
-module.exports = { validateEmail, validatePassword, verifyToken };
+module.exports = { validateEmail, validatePassword, verifyToken, checkIfUserExists };

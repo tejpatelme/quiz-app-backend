@@ -2,22 +2,6 @@ const { User } = require("../models/user.model");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-module.exports.checkIfUserExists = async (req, res, next) => {
-  const { email } = req.body;
-
-  const user = await User.findOne({ email: email.toLowerCase() });
-
-  if (user) {
-    return res.status(200).json({
-      success: false,
-      errorMessage:
-        "A user with the specified email already exists. Please login instead",
-    });
-  }
-
-  next();
-};
-
 
 exports.signUpUser = async (req, res) => {
   const user = req.body;
@@ -31,7 +15,7 @@ exports.signUpUser = async (req, res) => {
     password: user.password,
   });
 
-  res.status(201).json({ success: true, newUsert });
+  res.status(201).json({ success: true, newUser });
 };
 
 
