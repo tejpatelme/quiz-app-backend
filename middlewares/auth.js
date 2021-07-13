@@ -20,7 +20,6 @@ const checkIfUserExists = async (req, res, next) => {
 
 const validateEmail = (req, res, next) => {
   const { email } = req.body;
-
   const isEmail = validator.isEmail(email);
 
   if (!isEmail) {
@@ -35,12 +34,12 @@ const validateEmail = (req, res, next) => {
 const validatePassword = (req, res, next) => {
   const { password } = req.body;
 
-  const isStrongPassword = validator.isStrongPassword(password, { minSymbols: 0 });
+  const isStrongPassword = validator.isStrongPassword(password, { minSymbols: 0, minUppercase: 0, minNumbers: 0 });
 
   if (!isStrongPassword) {
     return res
       .status(401)
-      .json({ success: false, errorMessage: "Password is not strong enough" });
+      .json({ success: false, errorMessage: "Password should be 8 characters or long" });
   }
 
   next();
